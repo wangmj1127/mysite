@@ -1,0 +1,20 @@
+<div class="section header">
+    <div class="pull-left account">
+        <img src="/static/images/example.jpg" alt="">
+        <span>Daily Note</span>
+    </div>
+    {% if request.user.is_authenticated %}
+        <div class="pull-right link">
+            <a href="/account">Account</a>
+            <span>/</span>
+            <a href="/logout">Logout</a>
+        </div>
+        <a class="pull-right link-note" href="/edit_note">Note</a>
+    {% else %}
+        <div class="pull-right link">
+            <a href="/login">Login</a>
+            <span>/</span>
+            <a href="/register">register</a>
+        </div>
+    {% endif %}
+</div>

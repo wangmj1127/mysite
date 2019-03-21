@@ -1,0 +1,226 @@
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+body, p, h1, h2, h3, h4, h5, h6, ul, li {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media 
+(-webkit-min-device-pixel-ratio: 1.5), 
+(min-resolution: 2dppx){ 
+    /* Retina下仍使用默认字体渲染 */
+    body { -webkit-font-smoothing: subpixel-antialiased; }
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+a {background-color: transparent;}
+li {list-style: none;}
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+b, strong {
+  font-weight: bolder;
+}
+code, kbd, samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+small {font-size: 80%;}
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+img {border-style: none;}
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+button, input {
+  overflow: visible;
+}
+button, select {
+  text-transform: none;
+}
+button, [type="button"], [type="reset"], [type="submit"] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+fieldset {padding: 0.35em 0.75em 0.625em;}
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0; /* 3 */
+  white-space: normal;
+}
+progress {vertical-align: baseline;}
+textarea {overflow: auto;}
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+details {display: block;}
+summary {display: list-item;}
+template {display: none;}
+[hidden] {display: none;}
+/* 以上参考自：https://github.com/necolas/normalize.css/blob/master/normalize.css */
+
+
+/* layout */
+.bs {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.gap {margin-bottom: 20rpx;}
+.gap2 {margin-bottom: 40rpx;}
+.gap-above {margin-top: 20rpx;}
+.modal, .mask {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  overflow: hidden;
+}
+.mask {background-color: rgba(0, 0, 0, .5);}
+
+/* text */
+.t-left {text-align: left;}
+.t-center {text-align: center;}
+.t-right {text-align: right;}
+.t-indent {text-indent: 2em;}
+
+.t-largest {font-size: 40px;} /* 大的数字、金额、时间等 */
+.t-h1 {font-size: 20px;} /* 页面大标题类 */
+.t-large {font-size: 18px;} /* 页面大按钮类 */
+.t-h2 {font-size: 17px;} /* 页面次要层级信息 */
+.t-m {font-size: 14px;} /* 次要描述信息 */
+.t-sub {font-size: 13px;} /* 辅助信息 */
+.t-s {font-size: 11px;} /* 说明文本 */
+.t-bold {font-weight: bold;}
+.t-linethrough {text-decoration: line-through;}
+
+.tc-yes {color: #09BB07;}
+.tc-no {color: #E64340;}
+.tc-0 {color: black;}
+.tc-f {color: white;}
+.tc-m {color: #353535;}
+.tc-g {color: #888888;}
+.tc-l {color: #B2B2B2;}
+
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ellipsis2 {
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pull-left {float: left!important;}
+.pull-right {float: right!important;}
+
+.section {
+  color: black;
+  width: 96%;
+  height: 100px;
+  line-height: 80px;
+  margin: 20px auto;
+  padding: 10px;
+  background: rgb(196, 229, 220);
+  border: 1px solid rgb(179, 165, 160);
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.link a, .link span {
+  text-decoration: none;
+  color: rgb(126, 127, 128);
+}
+.footer {
+  position: relative;
+  z-index: 9;
+}
+.header .account img {
+  width: 80px;
+  height: 80px;
+  margin-right: 7px;
+  vertical-align: middle;
+}
+.main {
+  width: 96%;
+  margin: 0 auto;
+  min-height: 600px;
+}

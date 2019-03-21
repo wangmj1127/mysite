@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title_block %}
+    MyAccount
+{% endblock %}
+
+{% block body_block %}
+    <style>
+        .form {
+            width: 24%;
+            margin-right: 4%;
+            color: #666;
+        }
+
+
+        .form label {
+            display: block;
+            padding-bottom: 7px;
+        }
+
+        .form input {
+            width: 100%;
+            height: 50px;
+            padding-left: 5px;
+            padding-right: 5px;
+            border: 1px solid rgb(186, 186, 186);
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+
+        .form-btns {
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .form-btns button, #btnChooseImg {
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            width: 46%;
+            line-height: 40px;
+            font-size: 17px;
+            color: white;
+            background: rgb(123, 193, 173);
+            border-radius: 10px;
+            outline: none;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .photo-box {
+            width: 100%;
+            /* max-width: 300px; */
+            height: 0;
+            padding-bottom: 100%;
+            overflow: hidden;
+        }
+
+        .user-photo {
+            width: 100%;
+            /* max-width: 300px; */
+            /* max-height: 300px; */
+        }
+
+        #btnChooseImg {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
+
+    <body>
+
+    <div class="main">
+        <!-- update password -->
+        <div class="pull-left form">
+            <form autocomplete="off" action="{% url 'account:change_password' %}" method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <fieldset>
+                        <label class="control-label hide" for="oldPassword">Old Password:</label>
+                        <input type="password" class="form-control" name="oldPassword" id="oldPassword"
+                               placeholder="Old Password">
+                    </fieldset>
+                </div>
+
+                <div class="form-group">
+                    <fieldset>
+                        <label class="control-label" for="newPassword">New Password:</label>
+                        <input type="password" class="form-control" name="newPassword" id="newPassword"
+                               placeholder="New Password">
+                    </fieldset>
+                </div>
+
+                <div class="form-group">
+                    <fieldset>
+                        <label class="control-label" for="rePassword">Confirm New Password:</label>
+                        <input type="password" class="form-control" name="rePassword" id="rePassword"
+                               placeholder="Confirm New Password">
+                    </fieldset>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Password</button>
+                <p style="color: red">{{ msg }}</p>
+            </form>
+
+        </div>
+        <!-- update username -->
+        <div class="pull-left form">
+            <form action="{% url 'account:change_username' %}" method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label class="col-form-label" for="username">Change Username:</label>
+                    <input type="text" class="form-control" placeholder="Please input a username" name="username"
+                           id="username">
+                </div>
+
+                    <button type="submit" class="btn btn-primary">Update username</button>
+
+            </form>
+        </div>
+        <!-- update photo -->
+        <div class="pull-left form">
+            <form action="{% url 'account:change_mugshot' %}" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Change Profile Photo:</label>
+                    <div class="photo-box">
+                        <img id="userPhoto" class="user-photo" src="/media/{{ request.user.mugshot }}" alt="ProfilePhoto">
+                    </div>
+                </div>
+
+                <div class="form-btns">
+                    <input id="btnChooseImg" name="userPhoto" type="file" accept="image/*"/>
+                    <button type="submit" class="pull-left">Choose img</button>
+
+                    <button type="submit" class="pull-right">Update img</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    </div>
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script>
+        var fileInput = $('#btnChooseImg');
+        var userImg = $('#userPhoto');
+
+        fileInput.change(function () {
+            var objUrl = getObjectURL(this.files[0]);
+            console.log("objUrl = " + objUrl);
+            if (objUrl) {
+                userImg.attr("src", objUrl);
+            }
+        })
+
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+    </script>
+    </body>
+{% endblock %}
+</html>
